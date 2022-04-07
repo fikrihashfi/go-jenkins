@@ -5,6 +5,11 @@ pipeline{
         scmUrl = "https://github.com/fikrihashfi/go-jenkins.git"
     }
     stages{
+        stage("User Check"){
+            steps{
+                sh 'whoami'
+            }
+        }
         stage("Checkout"){
             steps{
                 git branch: "${branch}", url: "${scmUrl}"
