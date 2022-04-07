@@ -11,16 +11,24 @@ pipeline{
             }
         }
         stage('Build image') {
-            sh 'docker build -t simple-docker-jenkins'
+            steps{
+                sh 'docker build -t simple-docker-jenkins'
+            }
         }
         stage('Run Container') {
-            sh 'docker run simple-docker-jenkins --name simple-docker-jenkins'
+            steps{
+                sh 'docker run simple-docker-jenkins --name simple-docker-jenkins'
+            }
         }
         stage('Check Container') {
-            sh 'docker exec -it simple-docker-jenkins echo "Container Running"'
+            steps{
+                sh 'docker exec -it simple-docker-jenkins echo "Container Running"'
+            }
         }
          stage('Stop Container') {
-            sh 'docker stop simple-docker-jenkins && docker rm simple-docker-jenkins'
+            steps{
+                sh 'docker stop simple-docker-jenkins && docker rm simple-docker-jenkins'
+            }
         }
         stage("Deploy"){
             steps{
