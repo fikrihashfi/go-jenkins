@@ -13,7 +13,7 @@ pipeline{
         }
         stage("Checkout"){
             steps{
-                git url: "${branch}", url: "${scmUrl}"
+                git branch: "${branch}", url: "${scmUrl}"
             }
         }
         stage("Test"){
