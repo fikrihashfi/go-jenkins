@@ -22,7 +22,7 @@ pipeline{
         }
         stage('Run Container') {
             steps{
-                sh 'docker run --rm --name simple-docker-jenkins -d simple-docker-jenkins'
+                sh 'docker run --rm --name simple-docker-jenkins simple-docker-jenkins'
             }
         }
         stage("Deploy"){
