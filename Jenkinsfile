@@ -22,17 +22,7 @@ pipeline{
         }
         stage('Run Container') {
             steps{
-                sh 'docker run --name simple-docker-jenkins -d simple-docker-jenkins'
-            }
-        }
-        stage('Check Container') {
-            steps{
-                sh 'docker exec -it simple-docker-jenkins echo "Container Running"'
-            }
-        }
-         stage('Stop Container') {
-            steps{
-                sh 'docker stop simple-docker-jenkins && docker rm simple-docker-jenkins'
+                sh 'docker run --rm --name simple-docker-jenkins -d simple-docker-jenkins'
             }
         }
         stage("Deploy"){
