@@ -12,7 +12,7 @@ pipeline{
         }
         stage('Build image') {
             steps{
-                sh 'docker build -t simple-docker-jenkins'
+                sh 'docker build . -t simple-docker-jenkins'
             }
         }
         stage('Run Container') {
