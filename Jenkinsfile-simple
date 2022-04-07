@@ -1,5 +1,5 @@
 pipeline{
-    def app
+    agent any
     environment {
         root = "/usr/local/go/bin/go"
         branch = "master"
@@ -16,12 +16,14 @@ pipeline{
                 git branch: "${branch}", url: "${scmUrl}"
             }
         }
-       stage('Build image') {
-            app = docker.build("simple-go-jenkins")
+        stage("Test"){
+            steps{
+                sh "${root} test ./... -cover"
+            }
         }
-        stage('Test image') {
-            app.inside {
-                sh 'echo "Tests passed"'
+        stage("Build"){
+            steps{
+                sh "${root} build ./..."
             }
         }
         stage("Deploy"){
